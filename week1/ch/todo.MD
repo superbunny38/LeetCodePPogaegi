@@ -5,3 +5,9 @@
 
 
 ### Dijkstra
+
+
+### Trie 활용법
+https://www.geeksforgeeks.org/trie-insert-and-search/
+
+-> 맞춰서 https://leetcode.com/problems/design-add-and-search-words-data-structure/description/?envType=study-plan-v2&envId=top-interview-150 다시 풀기
