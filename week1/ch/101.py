@@ -6,30 +6,12 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        
-        store = dict()
-        
-        def solve(root,lvl):
-            if root == None:
-                return
-            left = None if root.left == None else root.left.val
-            right = None if root.right == None else root.right.val
-            if lvl in store:
-                store[lvl] += [left,right]
+        def sym(left,right):
+            if left == None and right == None:
+                return True
+            elif left != None and right != None:
+                return (left.val == right.val) and (sym(left.left,right.right) and sym(left.right,right.left))
             else:
-                store[lvl] = [left,right]
-            # print(f"left:{left} right:{right} lvl:{lvl}")
-            solve(root.left,lvl+1)
-            solve(root.right,lvl+1)
-
+                return False
+        return sym(root.left,root.right)
         
-
-        def symm(store):
-            for lvl, vals in store.items():
-                if vals[:int(len(vals)//2)][::-1] != vals[int(len(vals)//2):]:
-                    # print(vals[:int(len(vals)//2)])
-                    return False
-            return True
-        
-        solve(root,0)
-        return symm(store)
