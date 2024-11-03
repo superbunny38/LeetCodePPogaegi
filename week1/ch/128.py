@@ -1,9 +1,9 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        hash = dict()
+        hash = set()
         max_count = 0
         for num in nums:
-            hash[num] = True
+            hash.add(num)
         for num in nums:
             if num-1 in hash:
                 continue
