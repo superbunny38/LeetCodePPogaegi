@@ -22,6 +22,7 @@ class Solution:
         4. check left child first, if there is a left child, put it in the back of the queue
         5. check the right child first, if there is a right child, put it in the back of the queue
         '''
+        
         q = deque([root])
         result = []
         while q:
