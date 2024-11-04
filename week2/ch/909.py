@@ -29,12 +29,7 @@ class Solution:
         visited = [False]*(n**2+1)
         
         while queue:
-            # print()
             point = queue.pop(0)
-            cur_x,cur_y = find_coord(point.v)
-            # print("point.v:",point.v,(cur_x,cur_y))
-            if board[cur_x][cur_y] != -1:
-                point.v = board[cur_x][cur_y]
             if point.v == n*n:
                 return point.dist
             
@@ -43,11 +38,13 @@ class Solution:
                 if try_v <= n*n and visited[try_v] == False:
                     visited[try_v] = True
                     try_x,try_y = find_coord(try_v)
-                    # print("try_v:",try_v,(try_x,try_y))
                     # print(f"found:{try_v} at {try_x},{try_y}")
                     new_dist = point.dist+1
                     new_point = Vertex(try_v,new_dist)
                     
+                    if board[try_x][try_y] != -1:
+                        new_v = board[try_x][try_y]
+                        new_point.v = new_v
                     queue.append(new_point)    
         return -1
             
