@@ -1,3 +1,4 @@
+
 class Vertex:
     def __init__(self, v = None, dist = 0):
         self.v = v
