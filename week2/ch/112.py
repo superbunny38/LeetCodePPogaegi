@@ -9,16 +9,7 @@ class Solution:
         if root is None:
             return False
 
-        goto_list = [(root,0)]
+        if root.left is None and root.right is None:
+            return targetSum == root.val
         
-        while goto_list:
-            cur_node, prev_sum = goto_list.pop(0)
-            if cur_node.left == None and cur_node.right == None:#leaf node
-                if cur_node.val + prev_sum == targetSum:
-                    return True
-                continue
-            if cur_node.left is not None:
-                goto_list.append((cur_node.left,cur_node.val+prev_sum))
-            if cur_node.right is not None:
-                goto_list.append((cur_node.right,cur_node.val+prev_sum))
-        return False
+        return (self.hasPathSum(root.left,targetSum-root.val) or (self.hasPathSum(root.right,targetSum-root.val)))
